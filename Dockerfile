@@ -107,11 +107,6 @@ RUN wget -q https://github.com/broadinstitute/cromwell/releases/download/58/crom
 RUN wget -q https://raw.githubusercontent.com/klarman-cell-observatory/cumulus/master/docker/monitor_script.sh -O /usr/local/src/ctat-mutations/WDL/monitor_script.sh
 RUN chmod a+rx /usr/local/src/ctat-mutations/WDL/monitor_script.sh
 
-RUN apt-get -qq -y remove automake build-essential curl gcc g++ git make unzip wget && \
-    apt-get -qq -y autoremove && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* /var/log/dpkg.log
-
 ENV PATH=/usr/local/src/gatk-${GATK_VERSION}:/usr/local/src/ctat-mutations/WDL/:$PATH
 
 RUN mkdir /opt/ctat_genome_lib_build_dir/
