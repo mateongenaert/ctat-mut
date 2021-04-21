@@ -111,16 +111,3 @@ ENV PATH=/usr/local/src/gatk-${GATK_VERSION}:/usr/local/src/ctat-mutations/WDL/:
 
 RUN mkdir /opt/ctat_genome_lib_build_dir/
 WORKDIR /opt/ctat_genome_lib_build_dir/
-
-RUN wget -q https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play.tar.gz -O /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play.tar.gz
-RUN tar -xvf /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play.tar.gz
-RUN wget -q https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/MUTATION_LIB_SUPPLEMENT/GRCh38.mutation_lib_supplement.Jul272020.tar.gz -O /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/GRCh38.mutation_lib_supplement.Jul272020.tar.gz
-RUN tar -xvf /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/GRCh38.mutation_lib_supplement.Jul272020.tar.gz -C /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/
-
-WORKDIR /usr/local/src/ctat-mutations/
-RUN python ctat-mutations/mutation_lib_prep/ctat-mutation-lib-integration.py --genome_lib_dir /opt/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/
-RUN mkdir /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/ctat_mutation_lib/cravat
-WORKDIR /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/ctat_mutation_lib/cravat
-RUN oc config md /opt/ctat_genome_lib_build_dir/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/ctat_mutation_lib/cravat
-RUN oc module install-base 
-RUN oc module install --yes vest chasmplus vcfreporter mupit clinvar
