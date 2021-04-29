@@ -65,7 +65,7 @@ RUN wget -q https://github.com/samtools/bcftools/releases/download/1.9/bcftools-
 
 ## STAR
 WORKDIR $SRC
-ENV STAR_VERSION=2.7.2b
+ENV STAR_VERSION=2.7.8a
 RUN STAR_URL="https://github.com/alexdobin/STAR/archive/${STAR_VERSION}.tar.gz" &&\
     wget -q -P $SRC $STAR_URL &&\
     tar -xvf $SRC/${STAR_VERSION}.tar.gz -C $SRC && \
