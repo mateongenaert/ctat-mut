@@ -99,6 +99,7 @@ RUN git clone https://github.com/igvteam/igv-reports.git && \
 ## NCIP CTAT mutations
 WORKDIR $SRC
 ENV CTAT_MUTATIONS_TAG=v3.0.0
+ENV CTAT_GENOME_LIB="/data/ctat_library/GRCh38_gencode_v37_CTAT_lib_Mar012021.plug-n-play/ctat_genome_lib_build_dir/"
 RUN git clone https://github.com/NCIP/ctat-mutations.git && \
     cd ctat-mutations && \
     git checkout tags/${CTAT_MUTATIONS_TAG}
